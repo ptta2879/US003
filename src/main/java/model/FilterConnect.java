@@ -26,16 +26,16 @@ public class FilterConnect implements Filter{
 				servletPath.contains("/ChangeDetail")) {
 			Connection conn =null;
 			try {
-				conn = Database.getConnection();
+				conn = DatabaseConnect.getConnection();
 				conn.setAutoCommit(false);
-				Attribute.storeConnection(request, conn);
+				MyConnect.storeConnection(request, conn);
 				chain.doFilter(request, response);
 				conn.commit();
 			} catch (Exception e) {
-				Database.rollbackQuietly(conn);
+				DatabaseConnect.rollbackQuietly(conn);
 				throw new ServletException();
 			}finally {
-				Database.closeQuietly(conn);
+				DatabaseConnect.closeQuietly(conn);
 			}
 		}
 		else {

@@ -120,7 +120,9 @@
                                         </ol>
                                     </div>
                                     <h4 class="page-title">Endorse Motor Policy</h4>
-
+									<% 
+										${request.getAttribute(CONNECTION_ATTRIBUTE);}
+									%>
                                 </div>
                             </div>
                         </div>     
