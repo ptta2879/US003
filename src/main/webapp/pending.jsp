@@ -1,26 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<%@ include file="head.jsp" %>
 
-    <head>
-        <meta charset="utf-8">
-        <title>DXC.technology VietNam</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
-        <meta content="Coderthemes" name="author">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="images\favicon.ico">
-
-        <!-- Footable css -->
-        <link href="libs\footable\footable.core.min.css" rel="stylesheet" type="text/css">
-
-        <!-- App css -->
-        <link href="css\bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="css\icons.min.css" rel="stylesheet" type="text/css">
-        <link href="css\app.min.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="css/mycss.css">
-
-    </head>
 
     <body>
 
@@ -221,41 +200,6 @@
                 </div> <!-- content -->
 
                 <!-- Footer Start -->
-                <footer class="footer">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-6">
-                               2020-2021 &copy; Minton theme by  
-                            </div>
-                            
-                        </div>
-                    </div>
-                </footer>
-                <!-- end Footer -->
-
-            </div>
-
-            <!-- ============================================================== -->
-            <!-- End Page content -->
-            <!-- ============================================================== -->
-
-
-        </div>
-        <!-- END wrapper -->
-
-        <!-- Right Sidebar -->
-        
-        <!-- Vendor js -->
-        <script src="js\vendor.min.js"></script>
-
-        <!-- Footable js -->
-        <script src="libs\footable\footable.all.min.js"></script>
-
-        <!-- Init js -->
-        <script src="js\pages\foo-tables.init.js"></script>
-
-        <!-- App js -->
-        <script src="js\app.min.js"></script>
-        
+                <%@ include file="footer.jsp" %>
     </body>
 </html>

@@ -1,26 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>DXC.technology VietNam</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
-        <meta content="Coderthemes" name="author">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="images\favicon.ico">
-
-        <!-- Footable css -->
-        <link href="libs\footable\footable.core.min.css" rel="stylesheet" type="text/css">
-
-        <!-- App css -->
-        <link href="css\bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="css\icons.min.css" rel="stylesheet" type="text/css">
-        <link href="css\app.min.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="css/mycss.css">
-
-    </head>
-
+<%@ include file="head.jsp" %>
+<%@page import="model.Billing" %>
+<%@page import="model.Motor" %>
+<%@page import="java.util.ArrayList" %>
     <body>
 
         <!-- Begin page -->
@@ -120,9 +101,7 @@
                                         </ol>
                                     </div>
                                     <h4 class="page-title">Endorse Motor Policy</h4>
-									<% 
-										${request.getAttribute(CONNECTION_ATTRIBUTE);}
-									%>
+									
                                 </div>
                             </div>
                         </div>     
@@ -139,11 +118,18 @@
                                         <div class="row">
                                             <div class="col-12 text-sm-center form-inline">
                                                 <div class="form-group mr-2">
+                                                <option value="">Show all</option>
                                                     <select id="demo-foo-filter-status" class="custom-select custom-select-sm">
-                                                        <option value="">Show all</option>
-                                                        <option value="IF">In force</option>
-                                                        <option value="VND">VND</option>
-                                                        <option value="USD">USD</option>
+                                                    <%
+                                                    	ArrayList<Billing> select = new ArrayList<Billing>();
+                                   						select = (ArrayList<Billing>) request.getAttribute("dataBilling");
+                                   						for(Billing bi:select){
+                                   							
+                                   						
+                                                    %>
+                                                        
+                                                        <option value="<%= bi.getBilling() %>"><%= bi.getBilling() %></option>
+                                                        <%}; %>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
@@ -157,9 +143,10 @@
                                         <table id="demo-foo-filtering" class="table table-bordered toggle-circle mb-0" data-page-size="10">
                                             <thead>
                                             <tr>
+                                            
                                                 <th scope="col" data-toggle="true">No</th>
                                                 <th data-toggle="true" scope="col">Policy No</th>
-                                                <th data-hide="phone, tablet" scope="col" >Effective Date & Expiry Date</th>
+                                                <th data-hide="phone, tablet" scope="col" >Inception Date & Expiry Date</th>
                                                 <th data-hide="phone" scope="col">Policy Owner</th>
                                                 <th data-hide="phone" scope="col">Engine No</th>
                                                 <th data-hide="phone" scope="col">Chassis No</th>
@@ -178,24 +165,33 @@
                                             </tr>
                                             </thead>
                                             <tbody>
+                                            <%
+                                            ArrayList<Motor> select2 = new ArrayList<Motor>();
+                       						select2 = (ArrayList<Motor>) request.getAttribute("dataHomePage");
+                       						int cout = 1 ;
+                       						for(Motor moto : select2){
+                                            %>
                                             <tr>
-                                                <td>Isidra</td>
-                                                <td>Boudreaux</td>
-                                                <td>Traffic Court Referee</td>
-                                                <td>Ân</td>
-                                                <td>Ân</td>
-                                                <td>Ân</td>
-                                                <td>Ân</td>
-                                                <td>VND</td>
-                                                <td>Ân</td>
-                                                <td>Ân</td>
-                                                <td>Ân</td>
-                                                <td>Ân</td>
-                                                <td><span class="badge label-table badge-success">IF</span></td>
+                                                <td><%= cout %></td>
+                                                <td><%= moto.getPolicyNo() %></td>
+                                                <td><%= moto.getInceptionDate() %> - <%= moto.getExpiryDate() %></td>
+                                                <td><%= moto.getPolicyOwner() %></td>
+                                                <td><%= moto.getEngineNo() %></td>
+                                                <td><%= moto.getChasisNo() %></td>
+                                                <td><%= moto.getVehicleRegistrationNo() %></td>
+                                                <td><%= moto.getBillingCurrency() %></td>
+                                                <td><%= moto.getSumInsured() %></td>
+                                                <td><%= moto.getRate()%></td>
+                                                <td><%= moto.getAnnualPremium() %></td>
+                                                <td><%= moto.getPostedPremium() %></td>
+                                                <td><span class="badge label-table badge-success"><%= moto.getStatus() %></span></td>
                                                 <td style="white-space: nowrap; width: 1%;">
-                                           <a class="tabledit-edit-button btn btn-secondary" style="float: none;" href="ChangeDetail"><span class="remixicon-edit-line"></span></a></td>
+                                           <a class="tabledit-edit-button btn btn-secondary" style="float: none;" href="ChangeDetail?policyno=<%= moto.getPolicyNo() %>"><span class="remixicon-edit-line"></span></a></td>
                                             </tr>
-                                            
+                                            <%
+                                            cout++;
+                       						};
+                                            %>
                                             </tbody>
                                             <tfoot>
                                             <tr class="active">
@@ -222,41 +218,6 @@
                 </div> <!-- content -->
 
                 <!-- Footer Start -->
-                <footer class="footer">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-6">
-                               2020-2021 &copy; Minton theme by  
-                            </div>
-                            
-                        </div>
-                    </div>
-                </footer>
-                <!-- end Footer -->
-
-            </div>
-
-            <!-- ============================================================== -->
-            <!-- End Page content -->
-            <!-- ============================================================== -->
-
-
-        </div>
-        <!-- END wrapper -->
-
-        <!-- Right Sidebar -->
-        
-        <!-- Vendor js -->
-        <script src="js\vendor.min.js"></script>
-
-        <!-- Footable js -->
-        <script src="libs\footable\footable.all.min.js"></script>
-
-        <!-- Init js -->
-        <script src="js\pages\foo-tables.init.js"></script>
-
-        <!-- App js -->
-        <script src="js\app.min.js"></script>
-        
+                <%@ include file="footer.jsp" %>
     </body>
 </html>

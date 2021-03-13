@@ -1,29 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>DXC.technology VietNam</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
-        <meta content="Coderthemes" name="author">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="images\favicon.ico">
+<%@ include file="head.jsp" %>
 
-        <!-- Footable css -->
-        <link href="libs\footable\footable.core.min.css" rel="stylesheet" type="text/css">
-<!-- Plugins css-->
-<link href="libs\bootstrap-colorpicker\bootstrap-colorpicker.min.css" rel="stylesheet" type="text/css">
-<link href="libs\clockpicker\bootstrap-clockpicker.min.css" rel="stylesheet" type="text/css">
-<link href="libs\bootstrap-datepicker\bootstrap-datepicker.min.css" rel="stylesheet" type="text/css">
-<link href="libs\bootstrap-daterangepicker\daterangepicker.css" rel="stylesheet">
-        <!-- App css -->
-        <link href="css\bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="css\icons.min.css" rel="stylesheet" type="text/css">
-        <link href="css\app.min.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="css/mycss.css">
-
-    </head>
 
     <body>
 
@@ -251,50 +227,6 @@
                 </div> <!-- content -->
 
                 <!-- Footer Start -->
-                <footer class="footer">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-6">
-                               2020-2021 &copy; Minton theme by  
-                            </div>
-                            
-                        </div>
-                    </div>
-                </footer>
-                <!-- end Footer -->
-
-            </div>
-
-            <!-- ============================================================== -->
-            <!-- End Page content -->
-            <!-- ============================================================== -->
-
-
-        </div>
-        <!-- END wrapper -->
-
-        <!-- Right Sidebar -->
-        
-        <!-- Vendor js -->
-        <script src="js\vendor.min.js"></script>
-
-        <!-- Plugins js-->
-        <script src="libs\bootstrap-colorpicker\bootstrap-colorpicker.min.js"></script>
-        <script src="libs\clockpicker\bootstrap-clockpicker.min.js"></script>
-        <script src="libs\bootstrap-datepicker\bootstrap-datepicker.min.js"></script>
-        <script src="libs\moment\moment.min.js"></script>
-        <script src="libs\bootstrap-daterangepicker\daterangepicker.js"></script>
-
-        <!-- Init js-->
-        <script src="js\pages\form-pickers.init.js"></script>
-        <!-- Validation js (Parsleyjs) -->
-        <script src="libs\parsleyjs\parsley.min.js"></script>
-
-        <!-- validation init -->
-        <script src="js\pages\form-validation.init.js"></script>        
-
-        <!-- App js -->
-        <script src="js\app.min.js"></script>
-        
+                <%@ include file="footer.jsp" %>
     </body>
 </html>
