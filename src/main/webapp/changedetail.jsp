@@ -109,7 +109,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="card-box">
-                                    <h4 class="header-title">Detail Motor Policy</h4>
+                                    <h4 class="header-title">Detail Motor Policy <%= request.getParameter("policyno"); %></h4>
                                     <p id="desctable" class="sub-header">
                                         Enter all fieldd
                                     </p>
