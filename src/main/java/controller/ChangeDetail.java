@@ -14,6 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class ChangeDetail extends HttpServlet {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public void init() {
 		log("inti");
 	}
@@ -27,7 +31,7 @@ public class ChangeDetail extends HttpServlet {
 			query.append("Renewal_Date,Policy_Owner,Engine_Number,Chassis_No,Vehicle_Registration_No,");
 			query.append("b.Billing,Sum_insured,Rate,Annual_Premium,Posted_Premium,Effective_Date,statuspolicy ");
 			query.append("from Moto_Policy mp join Billing b on mp.Billing_Currency_id=b.id where ");
-			query.append("Policy_No like" + "'"+policyNoParam+"'");
+			query.append("Policy_No =" + "'"+policyNoParam+"'");
 			ResultSet result= stm.executeQuery(query.toString());
 			while(result.next()) {
 				model.Motor objectData = new model.Motor(result.getString(1), result.getDate(2), result.getDate(3),result.getString(5), 
@@ -35,6 +39,7 @@ public class ChangeDetail extends HttpServlet {
 						result.getFloat(11), result.getBigDecimal(12), result.getBigDecimal(13), result.getString(15));
 						objectData.setEffectiveDate(result.getDate(14));
 						request.setAttribute("dataChangePage",objectData);
+						
 			}
 			String queryBilling = "select id,Billing from Billing";
 			ResultSet resultBilling =  stm.executeQuery(queryBilling);
@@ -49,8 +54,8 @@ public class ChangeDetail extends HttpServlet {
 
 			e.printStackTrace();
 		}
-		RequestDispatcher req = request.getRequestDispatcher("changedetail.jsp");
-		req.forward(request, reponse);
+		RequestDispatcher re = request.getRequestDispatcher("changedetail.jsp");
+		re.forward(request, reponse);
 	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response ) {
 		

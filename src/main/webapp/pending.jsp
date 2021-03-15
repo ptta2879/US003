@@ -179,7 +179,7 @@
                                                 <td><%= moto.getPostedPremium() %></td>
                                                 <td><span class="badge label-table badge-secondary"><%= moto.getStatus() %></span></td>
                                                 <td style="white-space: nowrap; width: 1%;">
-                                           <button type='button' class="btn btn-sm btn-primary btn-xs btn-icon" id='nut'  data-toggle='modal' data-target='#update-modal' data-val='<%= jsonButton.toJson(moto) %>'><i class="remixicon-check-line"></i></button></td></td>
+                                           <button type='button' class="btn btn-sm btn-primary btn-xs btn-icon" id='nut'  data-toggle='modal' data-target='#update-modal' data-val='{"policyNo":"<%= moto.getPolicyNo() %>","effectiveDate":"<%= moto.getEffectiveDate() %>","expiryDate":"<%= moto.getExpiryDate() %>","inceptionDate":"<%= moto.getInceptionDate() %>","policyOwner":"<%=moto.getPolicyOwner() %>","engineNo":"<%= moto.getEngineNo() %>","chasisNo":"<%=moto.getChasisNo() %>","vehicleRegistrationNo":"<%=moto.getVehicleRegistrationNo() %>","billingCurrency":"<%=moto.getBillingCurrency() %>","sumInsured":<%=moto.getSumInsured() %>,"rate":<%=moto.getRate() %>,"annualPremium":<%=moto.getAnnualPremium() %>,"postedPremium":<%= moto.getPostedPremium() %>,"status":"<%= moto.getStatus() %>"}'><i class="remixicon-check-line"></i></button></td></td>
                                             </tr>
                                             <%cout++;
                                             };
@@ -217,17 +217,26 @@
                                                     </div>
                                                 </div>
                                                 
-          
+          										<div class="form-row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label>Inception Date</label>
+                                                            <div class="input-group">
+                                                                
+                                                                <input id="inceptiondate" name="inceptiondate" type="date" class="form-control" required=""   placeholder="dd/mm/yy" >
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 
                                                 <div class="form-row">
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label>Effective Date</label>
                                                             <div class="input-group">
-                                                                <div class="input-group-append">
-                                                                    <span class="input-group-text"><i aria-hidden="true" class="ti-calendar"></i></span>
-                                                                </div>
-                                                                <input id="effectivedate" name="effectivedate" type="text" class="form-control" required="" data-provide="datepicker" parsley-type="date" placeholder="dd/mm/yy" data-date-autoclose="true">
+                                                                
+                                                                <input id="effectivedate" name="effectivedate" type="date" class="form-control" required=""   placeholder="dd/mm/yy" >
                                                                 
                                                             </div>
                                                         </div>
@@ -240,10 +249,7 @@
                                                         <div class="form-group">
                                                             <label>Expiry Date</label>
                                                             <div class="input-group">
-                                                                <div class="input-group-append">
-                                                                    <span class="input-group-text"><i aria-hidden="true" class="ti-calendar"></i></span>
-                                                                </div>
-                                                                <input id="expirydate" name="expirydate" type="text" class="form-control" required="" data-provide="datepicker" parsley-type="date" placeholder="dd/mm/yy" data-date-autoclose="true">
+                                                                <input id="expirydate" name="expirydate" type="date" class="form-control" required="" placeholder="dd/mm/yy" >
                                                             </div>
                                                         </div>
                                                     </div>
@@ -303,7 +309,7 @@
                                                         <div class="form-group">
                                                             <label>Sum Insured</label>
                                                             <div>
-                                                                <input id="suminsured" data-parsley-type="number" name="suminsured" type="number" class="form-control" required="" min="0" data-parsley-maxlength="17" placeholder="10,000,000.00">
+                                                                <input id="suminsured"  step="0.01"  name="suminsured" type="number" class="form-control"  min="0"  placeholder="10,000,000.00">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -313,7 +319,7 @@
                                                         <div class="form-group">
                                                             <label>Rate</label>
                                                             <div>
-                                                                <input id="rate" step="0.01" data-parsley-type="number" name="rate" type="number" class="form-control" required="" min="0" data-parsley-maxlength="4" placeholder="0.1">
+                                                                <input id="rate" step="0.01"  name="rate" type="number" class="form-control"  min="0"  placeholder="0.1">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -323,7 +329,7 @@
                                                         <div class="form-group">
                                                             <label>Annual Premium</label>
                                                             <div>
-                                                                <input id="annualpremium" data-parsley-type="number" name="annualpremium" type="number" class="form-control" required=""  data-parsley-maxlength="17">
+                                                                <input id="annualpremium" step="0.01"  name="annualpremium" type="number" class="form-control">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -333,19 +339,18 @@
                                                         <div class="form-group">
                                                             <label>Posted Premium</label>
                                                             <div>
-                                                                <input id="postedpremium" data-parsley-type="number" name="postedpremium" type="number" class="form-control" required=""  data-parsley-maxlength="17">
+                                                                <input id="postedpremium" step="0.01"  name="postedpremium" type="number" class="form-control"   >
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
           
                                                 
-          
                                                 
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
-                                                <button type="submit" id="create" name="create" class="btn btn-success waves-effect waves-light" value="">Issue</button>
+                                                <button type="submit"   class="btn btn-success waves-effect waves-light" value="">Issue</button>
                                             </div>
                                             </form>
                                         </div>
@@ -364,6 +369,8 @@
                 </div> <!-- content -->
 
                 <!-- Footer Start -->
+                
                 <%@ include file="footer.jsp" %>
+           
     </body>
 </html>

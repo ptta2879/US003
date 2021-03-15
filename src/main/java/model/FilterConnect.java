@@ -23,7 +23,7 @@ public class FilterConnect implements Filter{
 		HttpServletRequest req = (HttpServletRequest) request;
 		String servletPath= req.getServletPath();
 		if(servletPath.contains("/Home") || servletPath.contains("/Pending") || 
-				servletPath.contains("/ChangeDetail")) {
+				servletPath.contains("/ChangeDetail")||servletPath.contains("/RefeshPage")) {
 			Connection conn =null;
 			try {
 				conn = DatabaseConnect.getConnection();

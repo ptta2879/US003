@@ -120,90 +120,83 @@
                                         <div class="form-group">
                                             <label>Policy No</label>
                                             <div>
-                                                <input name="policyno" type="text" class="form-control" value="<%=data.getPolicyNo() %>" required="" data-parsley-maxlength="8" placeholder="Max 8 chars">
+                                                <input id="policyno" readonly name="policyno" type="text" class="form-control" value="<%=data.getPolicyNo() %>" required="" data-parsley-maxlength="8" placeholder="Max 8 chars">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label>Inception Date</label>
                                             <div class="input-group">
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text"><i aria-hidden="true"  class="ti-calendar"></i></span>
-                                                </div>
-                                                <input name="inceptiondate" type="text" value="<%=data.getInceptionDate() %>" class="form-control" required="" data-provide="datepicker" parsley-type="date" placeholder="dd/mm/yy" data-date-autoclose="true">
+                                              
+                                                <input name="inceptiondate" id="inceptiondate" type="date" value="<%=data.getInceptionDate() %>" class="form-control" required="" placeholder="dd/mm/yy" >
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label>Effective Date</label>
                                             <div class="input-group">
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text"><i aria-hidden="true" class="ti-calendar"></i></span>
-                                                </div>
-                                                <input name="effectivedate" type="text" value="<%=data.getEffectiveDate() %>" class="form-control" required="" data-provide="datepicker" parsley-type="date" placeholder="dd/mm/yy" data-date-autoclose="true">
+                                                
+                                                <input name="effectivedate" type="date" id="effectivedate" class="form-control" required=""  >
                                                 
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label>Expiry Date</label>
                                             <div class="input-group">
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text"><i aria-hidden="true" class="ti-calendar"></i></span>
-                                                </div>
-                                                <input name="expirydate" value="<%=data.getExpiryDate() %>" type="text" class="form-control" required="" data-provide="datepicker" parsley-type="date" placeholder="dd/mm/yy" data-date-autoclose="true">
+                                                <input name="expirydate" id="expirydate" value="<%=data.getExpiryDate() %>" type="date" class="form-control" required="" >
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label>Policy Owner</label>
                                             <div>
-                                                <input name="policyowner" value="<%=data.getPolicyOwner() %>" type="text" class="form-control" required="" data-parsley-maxlength="8" placeholder="Max 8 chars">
+                                                <input id="policyowner" name="policyowner" readonly value="<%=data.getPolicyOwner() %>" type="text" class="form-control" required="" data-parsley-maxlength="8" placeholder="Max 8 chars">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label>Engine No</label>
                                             <div>
-                                                <input name="enghineno" value="<%=data.getEngineNo() %>" type="text" class="form-control" required="" data-parsley-maxlength="30" placeholder="1325ACEW">
+                                                <input id="enghineno" name="enghineno" value="<%=data.getEngineNo() %>" type="text" class="form-control" required="" data-parsley-maxlength="30" placeholder="1325ACEW">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label>Chassis No</label>
                                             <div>
-                                                <input name="chassicno" type="text" value="<%=data.getChasisNo() %>" class="form-control" required="" data-parsley-maxlength="30" placeholder="C1411MF">
+                                                <input id="chassicno" name="chassicno" type="text" value="<%=data.getChasisNo() %>" class="form-control" required="" data-parsley-maxlength="30" placeholder="C1411MF">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label>Vehicle Registration No</label>
                                             <div>
-                                                <input name="vehicleregistrationno" value="<%=data.getVehicleRegistrationNo() %>" type="text" class="form-control" required="" data-parsley-maxlength="30" placeholder="51H-791.02">
+                                                <input id="vehicleregistrationno" name="vehicleregistrationno" value="<%=data.getVehicleRegistrationNo() %>" type="text" class="form-control" required="" data-parsley-maxlength="30" placeholder="51H-791.02">
                                             </div>
                                         </div>
                                         
                                         <div class="form-group">
                                             <label>Sum Insured</label>
                                             <div>
-                                                <input data-parsley-type="number" step="0.1" value="<%=data.getSumInsured() %>" name="suminsured" type="number" class="form-control" required="" min="0" data-parsley-maxlength="17" placeholder="10,000,000.00">
+                                                <input data-parsley-type="number" step="0.1" value="<%=data.getSumInsured() %>" name="suminsured" id="suminsured" type="number" class="form-control" required="" min="0" data-parsley-maxlength="17" placeholder="10,000,000.00">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label>Rate</label>
                                             <div>
-                                                <input step="0.01" data-parsley-type="number" value="<%=data.getRate() %>" name="rate" type="number" class="form-control" required="" min="0" data-parsley-maxlength="4" placeholder="0.1">
+                                                <input step="0.01" data-parsley-type="number" value="<%=data.getRate() %>" name="rate" id="rate" type="number" class="form-control" required="" min="0" data-parsley-maxlength="4" placeholder="0.1">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label>Annual Premium</label>
                                             <div>
-                                                <input data-parsley-type="number" value="<%=data.getAnnualPremium() %>" name="annualpremium" type="number" class="form-control" required="" data-parsley-maxlength="17">
+                                                <input data-parsley-type="number" value="<%=data.getAnnualPremium() %>" name="annualpremium" id="annualpremium" type="number" class="form-control" required="" data-parsley-maxlength="17">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label>Posted Premium</label>
                                             <div>
-                                                <input data-parsley-type="number" value="<%=data.getPostedPremium() %>" name="postedpremium" type="number" class="form-control" required=""  data-parsley-maxlength="17">
+                                                <input value="<%=data.getPostedPremium() %>" name="postedpremium" id="postedpremium" type="number" class="form-control"   >
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label>Billing Currency</label>
                                             <div>
-                                                <select name="billing" class="form-control">
+                                                <select name="billing" id="billing" class="form-control">
                                                 <%
                                                 ArrayList<Billing> select = new ArrayList<Billing>();
                            						select = (ArrayList<Billing>) request.getAttribute("dataBillingChangePage");
@@ -219,10 +212,10 @@
 
                                         <div class="form-group mb-0">
                                             <div>
-                                                <button type="submit" class="btn btn-primary waves-effect waves-light mr-1">
+                                                <button type="button" onclick="appCalculator.ajaxSave();" class="btn btn-primary waves-effect waves-light mr-1">
                                                     Save
                                                 </button>
-                                                <button type="button" onclick="" class="btn btn-primary waves-effect waves-light mr-1">
+                                                <button type="button" onclick="appCalculator.ajaxCal();" class="btn btn-primary waves-effect waves-light mr-1">
                                                     Refresh
                                                 </button>
                                                 <button type="reset" class="btn btn-secondary waves-effect waves-light">
@@ -246,5 +239,6 @@
 
                 <!-- Footer Start -->
                 <%@ include file="footer.jsp" %>
+                <script type="text/javascript" src="js\apppremium.js"></script>
     </body>
 </html>
