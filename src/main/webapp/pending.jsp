@@ -1,7 +1,8 @@
 <%@ include file="head.jsp" %>
-
-
-    <body>
+<%@page import="model.Motor" %>
+<%@page import="java.util.ArrayList" %>
+<%@page import="com.google.gson.Gson" %>
+ <body>
 
         <!-- Begin page -->
         <div id="wrapper">
@@ -62,7 +63,7 @@
                                 </ul>
                                 <ul class="nav-second-level mm-collapse mm-show" aria-expanded="false">
                                     <li class="mm-active" >
-                                        <a class="active" href="pending">Pending endorsement</a>
+                                        <a class="active" href="Pending">Pending endorsement</a>
                                     </li>
                                 </ul>
                             </li>
@@ -111,7 +112,7 @@
                                 <div class="card-box">
                                     <h4 class="header-title">Motor Policy List</h4>
                                     <p id="desctable" class="sub-header">
-                                        Endorsement of Motor policy is saved successfully and pending
+                                        Endorsement of Motor policy is saved successfully and pending Ân
                                     </p>
                                     <div class="mb-2">
                                         <div class="row">
@@ -156,24 +157,33 @@
                                             </tr>
                                             </thead>
                                             <tbody>
+                                            <%
+                                            ArrayList<Motor> select2 = new ArrayList<Motor>();
+                       						select2 = (ArrayList<Motor>) request.getAttribute("dataPendingPage");
+                       						Gson jsonButton = new Gson();
+                       						int cout = 1 ;
+                       						for(Motor moto : select2){
+                                            %>
                                             <tr>
-                                                <td>Isidra</td>
-                                                <td>Boudreaux</td>
-                                                <td>Traffic Court Referee</td>
-                                                <td>Ân</td>
-                                                <td>Ân</td>
-                                                <td>Ân</td>
-                                                <td>Ân</td>
-                                                <td>VND</td>
-                                                <td>Ân</td>
-                                                <td>Ân</td>
-                                                <td>Ân</td>
-                                                <td>Ân</td>
-                                                <td><span class="badge label-table badge-success">IF</span></td>
+                                                <td><%= cout %></td>
+                                                <td><%= moto.getPolicyNo() %></td>
+                                                <td><%= moto.getEffectiveDate() %> - <%= moto.getExpiryDate() %></td>
+                                                <td><%= moto.getPolicyOwner() %></td>
+                                                <td><%= moto.getEngineNo() %></td>
+                                                <td><%= moto.getChasisNo() %></td>
+                                                <td><%= moto.getVehicleRegistrationNo() %></td>
+                                                <td><%= moto.getBillingCurrency() %></td>
+                                                <td><%= moto.getSumInsured() %></td>
+                                                <td><%= moto.getRate()%></td>
+                                                <td><%= moto.getAnnualPremium() %></td>
+                                                <td><%= moto.getPostedPremium() %></td>
+                                                <td><span class="badge label-table badge-secondary"><%= moto.getStatus() %></span></td>
                                                 <td style="white-space: nowrap; width: 1%;">
-                                           <a class="tabledit-edit-button btn btn-secondary" style="float: none;" href="changedetail.html"><span class="remixicon-edit-line"></span></a></td>
+                                           <button type='button' class="btn btn-sm btn-primary btn-xs btn-icon" id='nut'  data-toggle='modal' data-target='#update-modal' data-val='<%= jsonButton.toJson(moto) %>'><i class="remixicon-check-line"></i></button></td></td>
                                             </tr>
-                                            
+                                            <%cout++;
+                                            };
+                                            %>
                                             </tbody>
                                             <tfoot>
                                             <tr class="active">
@@ -187,11 +197,165 @@
                                         </table>
                                     </div> <!-- end .table-responsive-->
                                 </div> <!-- end card-box -->
+                                <div id="update-modal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header d-block">
+                                              <h4 class="modal-title text-center">Issued Motor policy</h4>
+                                              
+                                            </div>
+                                            <form class="needs-validation" novalidate method="POST">
+                                            <div class="modal-body p-4">
+                                                <div class="form-row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label>Policy No</label>
+                                                            <div>
+                                                                <input id="policyno" name="policyno" type="text" class="form-control" required="" data-parsley-maxlength="8" placeholder="Max 8 chars">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+          
+                                                
+                                                <div class="form-row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label>Effective Date</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text"><i aria-hidden="true" class="ti-calendar"></i></span>
+                                                                </div>
+                                                                <input id="effectivedate" name="effectivedate" type="text" class="form-control" required="" data-provide="datepicker" parsley-type="date" placeholder="dd/mm/yy" data-date-autoclose="true">
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+          
+                                                
+                                                <div class="form-row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label>Expiry Date</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text"><i aria-hidden="true" class="ti-calendar"></i></span>
+                                                                </div>
+                                                                <input id="expirydate" name="expirydate" type="text" class="form-control" required="" data-provide="datepicker" parsley-type="date" placeholder="dd/mm/yy" data-date-autoclose="true">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label>Policy Owner</label>
+                                                            <div>
+                                                                <input id="policyowner" name="policyowner" type="text" class="form-control" required="" data-parsley-maxlength="8" placeholder="Max 8 chars">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label>Engine No</label>
+                                                            <div>
+                                                                <input id="enghineno" name="enghineno" type="text" class="form-control" required="" data-parsley-maxlength="30" placeholder="1325ACEW">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label>Chassis No</label>
+                                                            <div>
+                                                                <input id="chassicno" name="chassicno" type="text" class="form-control" required="" data-parsley-maxlength="30" placeholder="C1411MF">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label>Vehicle Registration No</label>
+                                                            <div>
+                                                                <input id="vehicleregistrationno" name="vehicleregistrationno" type="text" class="form-control" required="" data-parsley-maxlength="30" placeholder="51H-791.02">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label>Billing Currency</label>
+                                                            <div>
+                                                                <input id="billing" name="billing" type="text" class="form-control" required="" data-parsley-maxlength="3" placeholder="VND">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label>Sum Insured</label>
+                                                            <div>
+                                                                <input id="suminsured" data-parsley-type="number" name="suminsured" type="number" class="form-control" required="" min="0" data-parsley-maxlength="17" placeholder="10,000,000.00">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label>Rate</label>
+                                                            <div>
+                                                                <input id="rate" step="0.01" data-parsley-type="number" name="rate" type="number" class="form-control" required="" min="0" data-parsley-maxlength="4" placeholder="0.1">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label>Annual Premium</label>
+                                                            <div>
+                                                                <input id="annualpremium" data-parsley-type="number" name="annualpremium" type="number" class="form-control" required=""  data-parsley-maxlength="17">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label>Posted Premium</label>
+                                                            <div>
+                                                                <input id="postedpremium" data-parsley-type="number" name="postedpremium" type="number" class="form-control" required=""  data-parsley-maxlength="17">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+          
+                                                
+          
+                                                
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                                                <button type="submit" id="create" name="create" class="btn btn-success waves-effect waves-light" value="">Issue</button>
+                                            </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             </div> <!-- end col -->
                         </div>
                         <!-- end row -->
 
-
+                      
                         
                         <!-- end row -->
                         

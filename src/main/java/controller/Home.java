@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.net.UnknownHostException;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -14,6 +15,8 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import model.Motor;
 
 
 
@@ -40,9 +43,10 @@ public class Home extends HttpServlet {
 			ArrayList <model.Motor> data = new ArrayList<model.Motor>();
 			while(result.next()) {
 				model.Motor objectPageHome = new model.Motor(result.getString(1), result.getDate(2), result.getDate(3),result.getString(5), 
-						result.getString(6), result.getString(7), result.getString(8), result.getString(9), result.getDouble(10), 
-						result.getFloat(11), result.getDouble(12), result.getDouble(13), result.getString(14));
+						result.getString(6), result.getString(7), result.getString(8), result.getString(9), result.getBigDecimal(10),
+						result.getFloat(11), result.getBigDecimal(12), result.getBigDecimal(13), result.getString(14));
 				data.add(objectPageHome);
+				
 			}
 			request.setAttribute("dataHomePage", data);
 			/*****
